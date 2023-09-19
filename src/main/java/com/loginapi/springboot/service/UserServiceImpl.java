@@ -24,15 +24,19 @@ public class UserServiceImpl implements UserService {
 	public MessageResponse createUser(UserRequest userRequest) {
 		User newUser = new User();
 		newUser.setUsername(userRequest.getUsername());
-		isValidPassword(userRequest.getPassword());
-		newUser.setPassword(userRequest.getPassword());
-		userRepository.save(newUser);
-		return new MessageResponse("New User created successfully");
+		if(isValidPassword(userRequest.getPassword())==true) {
+			newUser.setPassword(userRequest.getPassword());
+			userRepository.save(newUser);
+			return new MessageResponse("New User created successfully");
+		}
+		else {
+			return new MessageResponse("Password need to be greater than 8 characters, containing at least 1 number, 1 Capitalized letter, 1 special character in this set “_ # $ % ");
+		}
+		
 	}
 
 	@Override
 	public User getASingleUser(Integer userId) {
-		// TODO Auto-generated method stub
 		return userRepository.findById(userId);
 	}
 	 public static boolean
