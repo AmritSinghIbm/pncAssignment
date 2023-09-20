@@ -14,6 +14,10 @@ public class UserRequest {
     @NotNull
     private String password;
     
+    @NotBlank
+    @NotNull
+    private String ipAddress;
+    
     public String getUsername() {
         return username;
     }
@@ -25,6 +29,12 @@ public class UserRequest {
     }
     public void setPassword(String password) {
         this.password = password;
+    }
+    public String getIpAddress() {
+        return username;
+    }
+    public void setIpAddress(String ipAddress) {
+        this.username = ipAddress;
     }
 
 }
