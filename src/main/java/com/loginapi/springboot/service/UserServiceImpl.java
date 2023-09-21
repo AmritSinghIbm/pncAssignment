@@ -42,10 +42,10 @@ public class UserServiceImpl implements UserService {
 		
 		
 		GeolocationParams geoParams = new GeolocationParams();
-		geoParams.setIPAddress(userRequest.getIpAddress());
+		geoParams.setIPAddress(userRequest.getIpAddress().toString());
 		Geolocation geolocation = api.getGeolocation(geoParams);
 		
-		String outputCountry = geolocation.getCountryName().toString();
+		String outputCountry = geolocation.getCountryName().replace(',', ' ').toString();
 		
 		if(geolocation.getStatus() == 200) {
 		   if(outputCountry.equalsIgnoreCase("Canada")==true) {

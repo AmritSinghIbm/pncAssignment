@@ -1,6 +1,8 @@
 package com.loginapi.springboot.payload.request;
 
 
+import java.net.InetAddress;
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -16,7 +18,7 @@ public class UserRequest {
     
     @NotBlank
     @NotNull
-    private String ipAddress;
+    private InetAddress ipAddress;
     
     public String getUsername() {
         return username;
@@ -30,11 +32,11 @@ public class UserRequest {
     public void setPassword(String password) {
         this.password = password;
     }
-    public String getIpAddress() {
-        return username;
+    public InetAddress getIpAddress() {
+        return ipAddress;
     }
-    public void setIpAddress(String ipAddress) {
-        this.username = ipAddress;
+    public void setIpAddress(InetAddress ipAddress) {
+        this.ipAddress = ipAddress;
     }
 
 }

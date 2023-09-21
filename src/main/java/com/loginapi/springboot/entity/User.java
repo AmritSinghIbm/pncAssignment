@@ -1,5 +1,7 @@
 package com.loginapi.springboot.entity;
 
+import java.net.InetAddress;
+
 import jakarta.persistence.*;
 
 
@@ -17,7 +19,7 @@ public class User {
     
     private String password;
     
-    private String ipAddress;
+    private InetAddress ipAddress;
     
     public String getUsername() {
         return username;
@@ -31,10 +33,10 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-    public String getIpAddress() {
+    public InetAddress getIpAddress() {
         return ipAddress;
     }
-    public void setIpAddress(String ipAddress) {
+    public void setIpAddress(InetAddress ipAddress) {
         this.ipAddress = ipAddress;
     }
 
