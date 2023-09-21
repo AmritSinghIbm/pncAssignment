@@ -12,8 +12,11 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    
     private String username;
+    
     private String password;
+    
     private String ipAddress;
     
     public String getUsername() {
@@ -29,10 +32,10 @@ public class User {
         this.password = password;
     }
     public String getIpAddress() {
-        return username;
+        return ipAddress;
     }
     public void setIpAddress(String ipAddress) {
-        this.username = ipAddress;
+        this.ipAddress = ipAddress;
     }
 
 

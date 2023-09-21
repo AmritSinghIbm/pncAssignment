@@ -1,8 +1,6 @@
 package com.loginapi.springboot.service;
 
 
-import java.io.IOException;
-import java.net.InetAddress;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -25,6 +23,7 @@ import io.ipgeolocation.api.IPGeolocationAPI;
 @Service
 public class UserServiceImpl implements UserService {
 	
+
 	IPGeolocationAPI api = new IPGeolocationAPI("9c8615d32d6646ea9196e8a5dc4d7d7c");
 	
 	@Autowired
@@ -46,8 +45,10 @@ public class UserServiceImpl implements UserService {
 		geoParams.setIPAddress(userRequest.getIpAddress());
 		Geolocation geolocation = api.getGeolocation(geoParams);
 		
+		String outputCountry = geolocation.getCountryName().toString();
+		
 		if(geolocation.getStatus() == 200) {
-		   if(geolocation.getCountryName().equalsIgnoreCase("Canada")==true) {
+		   if(outputCountry.equalsIgnoreCase("Canada")==true) {
 			   newUser.setIpAddress(userRequest.getIpAddress());	
 		   }
 		   else {
@@ -95,29 +96,5 @@ public class UserServiceImpl implements UserService {
 	        // matched the ReGex
 	        return m.matches();
 	    }
-	 
-	 /* public static boolean ifLocationCanada(String ipAddress) throws IOException, GeoIp2Exception {
-		 
-			 	String targetCountry = "CANADA";
-			 	
-		 		WebServiceClient client = new WebServiceClient.Builder(916427, "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")
-		 			    .build();
-
-	 			InetAddress ipInetAddress = InetAddress.getByName(ipAddress);
-
-	 			// Do the lookup
-	 			CountryResponse response = client.country(ipInetAddress);
-
-	 			Country country = response.getCountry();
-	 			
-	 			String countryName = country.getName();
-	 			
-	 			boolean bool = countryName.equalsIgnoreCase(targetCountry);
-	 			
-	 			return bool;
-	 	}*/
-	 
-
-
 
 }
