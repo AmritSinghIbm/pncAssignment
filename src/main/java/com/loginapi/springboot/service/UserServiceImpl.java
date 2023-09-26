@@ -58,24 +58,17 @@ public class UserServiceImpl implements UserService {
 		City city = response.getCity();
 		System.out.println(city.getName());       // 'city'
 		
-
-		
-		/*String outputCountry = geolocation.getCountryName().replace(',','').toString();
-		
-		if(geolocation.getStatus() == 200) {
-		   if(outputCountry.equalsIgnoreCase("Canada")==true) {
-			   newUser.setIpAddress(userRequest.getIpAddress());	
+		if(country.getName().equalsIgnoreCase("Canada")==true) {
+			   newUser.setIpAddress(userRequest.getIpAddress());
+			   newUser.setCity(city.getName());
 		   }
 		   else {
 				return new MessageResponse("You are not eligible to register because of location restriction");
 			}
-		   
-		}else {
-			return new MessageResponse("Geo API connection error");
-		}*/
+
 		
 		userRepository.save(newUser);
-		return new MessageResponse("New User created successfully");	
+		return new MessageResponse("New User created successfully"+ "\n" +userRequest.getId()+ "\n" +userRequest.getCity());
 		
 	}
 

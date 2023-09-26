@@ -8,6 +8,9 @@ import javax.validation.constraints.NotNull;
 
 public class UserRequest {
 	
+	
+	private long id;
+	
 	@NotBlank
     @NotNull
     private String username;
@@ -20,6 +23,13 @@ public class UserRequest {
     @NotNull
     private InetAddress ipAddress;
     
+    @NotBlank
+    @NotNull
+    private String city;
+    
+    public long getId() {
+        return id;
+    }    
     public String getUsername() {
         return username;
     }
@@ -37,6 +47,12 @@ public class UserRequest {
     }
     public void setIpAddress(InetAddress ipAddress) {
         this.ipAddress = ipAddress;
+    }
+    public String getCity() {
+        return city;
+    }
+    public void setCity(String city) {
+        this.city = city;
     }
 
 }

@@ -21,6 +21,8 @@ public class User {
     
     private InetAddress ipAddress;
     
+    private String city;
+    
     public String getUsername() {
         return username;
     }
@@ -38,6 +40,12 @@ public class User {
     }
     public void setIpAddress(InetAddress ipAddress) {
         this.ipAddress = ipAddress;
+    }
+    public String getCity() {
+        return city;
+    }
+    public void setCity(String city) {
+        this.city = city;
     }
 
 
