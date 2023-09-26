@@ -1,6 +1,5 @@
 package com.loginapi.springboot.service;
 
-
 import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -53,10 +52,12 @@ public class UserServiceImpl implements UserService {
 			e.printStackTrace();
 		}
 
+	
 		Country country = response.getCountry();
-		System.out.println(country.getName());               // 'Country'
+		 
+		//System.out.println(country.getName());               // 'Country'
 		City city = response.getCity();
-		System.out.println(city.getName());       // 'city'
+		//System.out.println(city.getName());       // 'city'
 		
 		if(country.getName().equalsIgnoreCase("Canada")==true) {
 			   newUser.setIpAddress(userRequest.getIpAddress());
@@ -65,19 +66,17 @@ public class UserServiceImpl implements UserService {
 		   else {
 				return new MessageResponse("You are not eligible to register because of location restriction");
 			}
-
+		
+		String dispUsr = userRequest.getUsername();
 		
 		userRepository.save(newUser);
-		return new MessageResponse("New User created successfully"+ "\n" +userRequest.getId()+ "\n" +userRequest.getCity());
+		int idNumber = newUser.getUserId();
+		return new MessageResponse(idNumber+" Welcome "+ dispUsr + " from "+city.getName());
 		
 	}
+	
 
-	@Override
-	public User getASingleUser(Integer userId) {
-		return userRepository.findById(userId);
-	}
-	 public static boolean
-	    isValidPassword(String password)
+	 public static boolean isValidPassword(String password)
 	    {
 	 
 	        // Regex to check valid password.

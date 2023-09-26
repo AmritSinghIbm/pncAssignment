@@ -8,8 +8,9 @@ import javax.validation.constraints.NotNull;
 
 public class UserRequest {
 	
-	
-	private long id;
+	@NotBlank
+    @NotNull
+	private int id;
 	
 	@NotBlank
     @NotNull
@@ -27,7 +28,7 @@ public class UserRequest {
     @NotNull
     private String city;
     
-    public long getId() {
+    public int getId() {
         return id;
     }    
     public String getUsername() {

@@ -13,7 +13,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int id;
     
     private String username;
     
@@ -23,6 +23,9 @@ public class User {
     
     private String city;
     
+    public int getUserId() {
+        return id;
+    }
     public String getUsername() {
         return username;
     }
